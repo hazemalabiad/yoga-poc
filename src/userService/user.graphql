@@ -1,0 +1,16 @@
+type Subscription {
+  newUser: String!
+}
+
+type Mutation {
+  addUser(name: String!): User!
+}
+
+type Query {
+  hello: String!
+}
+
+type User @key(fields: "id") {
+  id: ID!
+  name: String!
+}
