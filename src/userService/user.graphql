@@ -1,7 +1,3 @@
-type Subscription {
-  newUser: String!
-}
-
 type Mutation {
   addUser(name: String!): User!
 }

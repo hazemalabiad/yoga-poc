@@ -1,6 +1,6 @@
 import { buildSubgraphSchema } from "@apollo/federation";
 import { createServer } from "graphql-yoga";
-import { loadTypeDefsSync, pubSub } from "../utls";
+import { loadTypeDefsSync } from "../utls";
 
 const NEW_NUMBER = "newNumber";
 const NUMBER_PORT = 4001;
@@ -15,16 +15,9 @@ const service = async () => {
   const typeDefs = loadTypeDefsSync(`${__dirname}/number.graphql`);
 
   const resolvers = {
-    Subscription: {
-      newNumber: {
-        subscribe: () => pubSub.asyncIterator(NEW_NUMBER),
-        resolve: (payload: any) => payload,
-      },
-    },
     Mutation: {
       broadcastRandomNumber: () => {
         const num = Math.random();
-        pubSub.publish(NEW_NUMBER, num);
         return num;
       },
     },
