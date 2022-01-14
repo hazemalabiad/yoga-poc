@@ -1,0 +1,23 @@
+# import User from "../userService/user.graphql"
+
+type Subscription {
+  newNumber: Float!
+}
+
+type Mutation {
+  broadcastRandomNumber: Float!
+}
+
+type Query {
+  hello: String!
+}
+
+type Key {
+  id: ID!
+  body: String!
+}
+
+extend type User @key(fields: "id") {
+  id: ID! @external
+  secretKey: Key!
+}
