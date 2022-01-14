@@ -1,0 +1,17 @@
+type Subscription {
+  newNumber: Float!
+}
+
+type Mutation {
+  broadcastRandomNumber: Float!
+}
+
+type Key {
+  id: ID!
+  body: String!
+}
+
+extend type User @key(fields: "id") {
+  id: ID! @external
+  secretKey: Key!
+}
