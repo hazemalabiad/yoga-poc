@@ -1,0 +1,37 @@
+type Subscription {
+  newNumber: Float!
+  product: Product!
+  newUser: User!
+}
+
+type Mutation {
+  broadcastRandomNumber: Float!
+  addUser(name: String!): User!
+}
+
+type Query {
+  hello: String!
+}
+
+type Key {
+  id: ID!
+  body: String!
+}
+
+type Product {
+  id: ID!
+  price: Float!
+  name: String!
+}
+
+type User {
+  id: ID!
+  name: String!
+  secretKey: Key!
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

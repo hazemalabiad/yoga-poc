@@ -1,5 +1,6 @@
 type Subscription {
   newNumber: Float!
+  product: Product!
 }
 
 type Mutation {
@@ -15,7 +16,8 @@ type Key {
   body: String!
 }
 
-extend type User @key(fields: "id") {
-  id: ID! @external
-  secretKey: Key!
+type Product {
+  id: ID!
+  price: Float!
+  name: String!
 }
